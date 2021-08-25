@@ -16,7 +16,6 @@ jobs:
       - name: Prepare
         id: prep
         run: |
-          echo REPOSITORY_OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
           DOCKER_IMAGE=ghcr.io/${{ REPOSITORY_OWNER }}/crypfinder
           VERSION=edge
           if [[ $GITHUB_REF == refs/tags/* ]]; then
