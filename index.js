@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-/*
+/**
  * This is the entry point of program. Select the strategy or analyzer(s)
  */
 const momentumStrategyStart = require("./strategies/momentumTrading/momentumTrading");
@@ -11,6 +11,10 @@ const momentumWithStopLossStrategyStart = require("./strategies/momentumTradingW
 const reverseMomentumStrategyStart = require("./strategies/reverseMomentumTrading/reverseMomentumTrading");
 const reverseMomentumStrategyAnalyzerStart = require("./strategies/reverseMomentumTrading/reverseMomentumTradingAnalyzer");
 
+/**
+ * Configure the trading strategy here or via the .env file.
+ * @type {"momentum" | "reverse-momentum" | "momentum-stop-loss"}
+ */
 const TRADING_STRATEGY = process.env.TRADING_STRATEGY || "momentum";
 
 switch (TRADING_STRATEGY) {
