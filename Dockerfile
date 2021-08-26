@@ -18,7 +18,7 @@ ENV NODE_ENV production
 # New data directory
 RUN mkdir data
 
-# Create a new user and groud to avoid using root user
+# Create a new user and group to avoid using root user
 RUN addgroup -g 1001 -S crypfinder
 RUN adduser -S crypfinder -u 1001
 RUN chown -R crypfinder:crypfinder /usr/src
