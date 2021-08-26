@@ -15,6 +15,9 @@ COPY --from=deps /usr/src/node_modules ./node_modules
 # Set env to production mode
 ENV NODE_ENV production
 
+# New data directory
+RUN mkdir data
+
 # Create a new user and groud to avoid using root user
 RUN addgroup -g 1001 -S crypfinder
 RUN adduser -S crypfinder -u 1001

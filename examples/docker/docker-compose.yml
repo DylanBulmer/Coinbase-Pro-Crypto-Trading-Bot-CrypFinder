@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+    btc-trader:
+        # image: crypfinder
+        image: ghcr.io/dylanbulmer/crypfinder:docker-image
+        env_file:
+            - ./.btc.env
+        volumes:
+            - btc:/usr/src/data/
+    doge-trader:
+        # image: crypfinder
+        image: ghcr.io/dylanbulmer/crypfinder:docker-image
+        env_file:
+            - ./.doge.env
+        volumes:
+            - doge:/usr/src/data/
+
+networks:
+    default:
+        external: false
+        name: crypfinder_default
+
+volumes:
+    btc:
+        external: false
+        name: crypfinder_btc
+    doge:
+        external: false
+        name: crypfinder_doge
