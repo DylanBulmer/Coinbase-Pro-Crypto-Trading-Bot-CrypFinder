@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    namespace: default
+    name: crypfinder
+    labels:
+        app: crypfinder
+
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: crypfinder
+    template:
+        metadata:
+            labels:
+                app: crypfinder
+        spec:
+            containers:
+                ### BTC Trader
+                - name: crypfinder-btc
+                  image: ghcr.io/dylanbulmer/crypfinder:docker-image
+                  envFrom:
+                      - secretRef:
+                            name: crypfinder-btc
+                  volumeMounts:
+                      - name: crypfinder-btc
+                        mountPath: /usr/src/data/
+                ### DOGE Trader
+                - name: crypfinder-doge
+                  image: ghcr.io/dylanbulmer/crypfinder:docker-image
+                  envFrom:
+                      - secretRef:
+                            name: crypfinder-doge
+                  volumeMounts:
+                      - name: crypfinder-doge
+                        mountPath: /usr/src/data/
+                ### BAT Trader
+                - name: crypfinder-bat
+                  image: ghcr.io/dylanbulmer/crypfinder:docker-image
+                  envFrom:
+                      - secretRef:
+                            name: crypfinder-bat
+                  volumeMounts:
+                      - name: crypfinder-bat
+                        mountPath: /usr/src/data/
+            volumes:
+                - name: crypfinder-btc
+                - name: crypfinder-doge
+                - name: crypfinder-bat
